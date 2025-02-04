@@ -1,23 +1,3 @@
-/* :root {
-    --newcolor-light: rgb(111, 29, 119);
-    --newcolor-dark: rgb(255, 167, 255);
-    --newcolor: var(--newcolor-light);
-}
-
-html[data-theme="dark"] {
-    --newcolor: var(--newcolor-dark);
-}
-
-.newcolor {color: var(--newcolor);}
-
-.newcolor-same {color: var(--newcolor-light);}
-
-.newcolor-filter {color: var(--newcolor-light);}
-
-html[data-theme="dark"] .newcolor-filter {
-    filter:  invert(1) hue-rotate(180deg) saturate(1.5);
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Gudea:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
@@ -101,35 +81,21 @@ html[data-theme="dark"] .newcolor-filter {
 :root[data-mode="auto"] .cm-builtin { color: #ff79c6; }
 :root[data-mode="auto"] .cm-string { color: #f1fa8c; }
 
-:root[data-mode="auto"].thebe .jp-OutputArea-output,
-:root[data-mode="auto"].thebe .jp-RenderedText {
-    color: #ffffff !important;
-    background-color: #2d2d2d !important;
-}
-
-:root[data-mode="auto"] .jp-OutputArea-output pre,
-:root[data-mode="auto"] .jp-RenderedText pre {
-    color: #ffffff !important;
-    background-color: #2d2d2d !important;
-}
-
 :root[data-mode="dark"] {
     --jp-rendermime-error-background: transparent !important;
-  }
+}
 
 :root[data-mode="auto"] {
---jp-rendermime-error-background: transparent !important;
+    --jp-rendermime-error-background: transparent !important;
 }
 
 /* Increase font size of normal text */
 body {
     font-size: 1.1em; /* Adjust the size as needed */
-    /* font-family: -apple-system, BlinkMacSystemFont, 'Inter', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     font-family: 'Gudea', sans-serif;
-    /* font-family: "Bricolage Grotesque", serif; */
-    /* font-family: 'JetBrains Mono', monospace; */
 }
 
+/* Thebe launch button */
 .thebe-launch-button .spinner {
     display: none !important;
 }
@@ -139,12 +105,6 @@ pre, code, .highlight pre, .highlight code, .CodeMirror {
     font-family: "Fira Code", monospace !important;
     font-size: 0.9em !important; /* Adjust size as needed */
 }
-
-/* Ensure Thebe's CodeMirror uses the correct font */
-/* .thebe-active .CodeMirror {
-    font-family: "Fira Code", monospace !important;
-    font-size: 0.9em !important;
-} */
 
 /* Ensure proper font and sizing in CodeMirror */
 .CodeMirror-lines {
@@ -165,7 +125,6 @@ div.highlight pre, div.highlight code, div.highlight-ipython3 pre {
 }
 
 h1, h2, h3, h4, h6 {
-    /* font-family: 'Gudea', sans-serif; */
     font-family: "Bricolage Grotesque", serif;
 }
 
@@ -174,19 +133,62 @@ h1, h2, h3, h4, h6 {
 }
 
 .cell_output.docutils.container img {
-    display: block; /* Makes sure the image is treated as a block element */
+    display: block; 
     margin-left: auto;
     margin-right: auto;
 }
 
 /* Ensure no background color is applied to images */
 div.cell_output img {
-    background-color: white !important;
+    background-color: transparent !important;
 }
 
-/* Ensure no brightness or contrast filter is applied to images in dark mode */
-html[data-theme="dark"] img:not(.only-dark, .dark-light) {
+/* Manually set image styling to remove inversion and filters */
+html[data-theme="dark"] img:not(.only-dark, .dark-light),
+html[data-theme="dark"] figure img:not(.only-dark, .dark-light),
+html[data-theme="dark"] iframe:not([src*="youtube.com"]):not([src*="vimeo.com"]):not(.only-dark) {
+    background-color: #fff !important;
+    border-radius: 0.25rem !important;
+}
+
+/* Ensure no filter effects apply */
+html[data-theme="dark"] img,
+html[data-theme="dark"] figure img,
+html[data-theme="dark"] .cell_output img,
+html[data-theme="dark"] div.cell_output img,
+html[data-theme="dark"] .jp-OutputArea-output img {
     filter: none !important;
+    -webkit-filter: none !important;
+    -moz-filter: none !important;
+    -o-filter: none !important;
+    -ms-filter: none !important;
+}
+
+/* Ensure iframe contents are not affected */
+html[data-theme="dark"] iframe {
+    filter: none !important;
+}
+
+/* Prevent inversion specifically for figures */
+html[data-theme="dark"] figure img,
+html[data-theme="dark"] .figure img {
+    filter: none !important;
+}
+
+/* Ensure specific class-based rules do not override filter settings */
+img.dark-light, img.only-dark, img.only-light {
+    filter: none !important;
+}
+
+/* Remove inversion effect from markdown and HTML embedded images */
+html[data-theme="dark"] img:not(.only-dark, .dark-light),
+html[data-theme="dark"] figure img {
+    filter: none !important;
+}
+
+/* Reset blending mode for all images */
+img {
+    mix-blend-mode: normal !important;
 }
 
 video {
@@ -197,10 +199,9 @@ video {
 html[data-theme="dark"] .bd-content div.cell_output .text_html:not(:has(table.dataframe)),
 html[data-theme="dark"] .bd-content div.cell_output,
 html[data-theme="dark"] .bd-content div.cell_output img {
-    background-color: transparent !important; /* Removes background color */
-    border-radius: 0 !important; /* Removes rounded corners */
-    padding: 0 !important; /* Removes padding */
-    border: none !important; /* Removes any borders */
-    color: inherit !important; /* Ensures text color is consistent */
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    color: inherit !important;
 }
-
