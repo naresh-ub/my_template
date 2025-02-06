@@ -1,6 +1,12 @@
 (intro)=
-# Welcome to the Template Book
+# My Teaching online webpage template
 
-_This is the first page the student will see when opening the url._
+This is my modified version of [teachbook]() that uses the [jupyter-book]() library.
 
-This book can be used as a template for other books. It includes a starter package of the software developed by the TeachBooks initiative and some exercises to get you going!
+## Features of teachbooks that I use
+
+* Live Coding using Pyodide.
+* JupyterQuiz.
+* Jupytercards.
+* Interactive matplotlib plots with ipywidgets.
+* Plotly plots.

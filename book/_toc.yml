@@ -4,18 +4,10 @@ root: intro.md
 parts:
   - caption: Contents
     chapters:
-    - file: some_content/overview.md
+    - file: chapter_1/overview.md
       sections:
-      - file: some_content/text_and_code.ipynb
-    - file: exercises
-      sections:
-      - file: exercises/001.md
-      - file: exercises/002.md
-      - file: exercises/003.md
-      - file: exercises/004.md
-      - file: exercises/005.md
-      - file: exercises/006.md
-      - file: exercises/summary
-    - file: references.md
+      - file: chapter_1/features.ipynb
     - file: changelog.md
-    - file: credits.md
+      sections:
+      - file: chapter_2/001.md
+    # - file: changelog.md
