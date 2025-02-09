@@ -1,12 +1,4 @@
 (intro)=
-# My Teaching online webpage template
+# My Teachbooks template
 
-This is my modified version of [teachbook]() that uses the [jupyter-book]() library.
-
-## Features of teachbooks that I use
-
-* Live Coding using Pyodide.
-* JupyterQuiz.
-* Jupytercards.
-* Interactive matplotlib plots with ipywidgets.
-* Plotly plots.
+Hi there! I am [Naresh Devulapally](https://naresh-ub.github.io), a Computer Science PhD student at [UB, SUNY](https://engineering.buffalo.edu/computer-science-engineering.html). 
